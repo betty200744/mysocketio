@@ -13,14 +13,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         loaders: ['babel-loader'],
       },
     ],
   },
   resolve: {
-    extensions: ['.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   output: {
     filename: 'bundle.js',
