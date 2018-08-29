@@ -9,13 +9,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './client/index.jsx',
+  entry: './client/index.js',
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.js$|.jsx$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader'],
+        loaders: ['babel-loader'], //babel-preset-es2015,babel-preset-react , jsx的解析
       },
     ],
   },
@@ -30,6 +30,11 @@ module.exports = {
   mode: 'development',
   plugins: [
     new CleanWebpackPlugin(),
-    // new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename:'index.html',
+      template:path.resolve(__dirname, './index.html'),
+      inject: true,
+      entry: './client/index.js',
+    }),
   ]
 };

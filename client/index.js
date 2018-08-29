@@ -5,5 +5,16 @@
 import React from 'react';
 import ReactDOM from'react-dom';
 import App  from './App';
+import socket from './socket';
+
+
+
+socket.on('connect', async () => {
+
+});
+
+socket.on('message', (message) => {
+
+});
 
 ReactDOM.render(<App/>, document.getElementById('App'));

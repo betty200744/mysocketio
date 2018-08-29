@@ -21,7 +21,6 @@ const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');
 const express = require('express');
 const bodyParser = require('body-parser');
-const socket = require('./socket');
 
 const compiler = webpack(webpackConfig);
 
@@ -30,6 +29,7 @@ process.env.NODE_ENV = 'development';
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
   hot: true,
   host: 'localhost',
+  publicPath: '/'
 });
 const hotMiddleware = require('webpack-hot-middleware')(compiler);
 
@@ -38,12 +38,5 @@ app.use(bodyParser.json());
 app.use(devMiddleware);
 app.use(hotMiddleware);
 
-socket.on('connect', async () => {
 
-});
-
-socket.on('message', (message) => {
-
-});
-
-app.listen(8080);
+app.listen(8080, () => console.log('Example app listening on port 3000!'));
