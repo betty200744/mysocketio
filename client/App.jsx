@@ -5,10 +5,12 @@
 
 import React from 'react';
 
-class Welcome extends React.Component {
+class App extends React.Component {
   render() {
-    return <h1>Hello</h1>;
+    return (
+      <h1>Hello</h1>
+    );
   }
 }
 
-export default Welcome;
+export default App;
