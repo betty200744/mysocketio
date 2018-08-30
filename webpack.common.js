@@ -1,7 +1,8 @@
 /**
- * Created by betty on 8/24/18.
+ * Created by betty on 8/30/18.
  */
 "use strict";
+
 
 const path = require('path');
 const webpack = require('webpack');
@@ -27,7 +28,6 @@ module.exports = {
     path: path.resolve(__dirname),
     publicPath: "/"
   },
-  mode: 'development',
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({

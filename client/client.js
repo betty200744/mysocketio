@@ -12,19 +12,21 @@
  * Express server with webpack
  */
 
-/**
- * Express server with socket.io.client
- *
- */
 
 const webpack = require('webpack');
-const webpackConfig = require('../webpack.config');
 const express = require('express');
 const bodyParser = require('body-parser');
-
-const compiler = webpack(webpackConfig);
+const merge = require('webpack-merge');
+let webpackConfig = require('../webpack.common');
 
 process.env.NODE_ENV = 'development';
+
+if (process.env.NODE_ENV === 'production') {
+  webpackConfig = merge(webpackConfig, require('../webpack.prod'))
+} else {
+  webpackConfig = merge(webpackConfig, require('../webpack.dev'))
+}
+const compiler = webpack(webpackConfig);
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
   hot: true,
